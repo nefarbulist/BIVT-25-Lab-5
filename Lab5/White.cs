@@ -358,8 +358,32 @@ namespace Lab5
             return answer;
         }
         public void Task12(int[][] array)
-        {
-            Array.Sort(array, (a, b) => a.Sum().CompareTo(b.Sum()));
-        }
+{
+    if (array == null)
+        return;
+
+    Array.Sort(array, CompareByRowSum);
+}
+
+private static int CompareByRowSum(int[] a, int[] b)
+{
+    int sumA = 0;
+    int sumB = 0;
+
+    if (a != null)
+    {
+        for (int i = 0; i < a.Length; i++)
+            sumA += a[i];
+    }
+
+    if (b != null)
+    {
+        for (int i = 0; i < b.Length; i++)
+            sumB += b[i];
+    }
+
+    return sumA.CompareTo(sumB);
+}
     }
 }
+
